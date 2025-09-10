@@ -23,6 +23,11 @@
         "id": 3,
         "description": "Amar",
         "location": [11.7138417,58.1253348]
+    },
+    {
+        "id": 5,
+        "description": "Stefan",
+        "location": [17.331056415463284,62.419464819354424]
     }
     ]
 }

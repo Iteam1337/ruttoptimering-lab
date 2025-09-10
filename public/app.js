@@ -222,7 +222,6 @@ async function optimizeRoutes() {
       },
       body: JSON.stringify({ vehicles, jobs }),
     })
-    console.log(response)
 
     if (response.ok) {
       optimizationResults = await response.json()
@@ -436,10 +435,10 @@ function displayResults() {
 
   const panel = document.getElementById('resultsPanel')
   const content = document.getElementById('resultsContent')
+  console.log(optimizationResults)
 
   content.innerHTML = `
         <div class="optimization-summary">
-            <p><strong>Optimeringstid:</strong> ${optimizationResults.optimizationTime}ms</p>
         </div>
     `
 
@@ -448,7 +447,7 @@ function displayResults() {
     routeCard.className = 'route-card'
     routeCard.innerHTML = `
             <div class="route-header">
-                <div class="route-title">${route.vehicleDescription}</div>
+                <div class="route-title">${route.description}</div>
                 <div class="route-stats">
                     ${route.steps.length} jobb • ${route.duration.toFixed(
       2
@@ -457,16 +456,22 @@ function displayResults() {
             </div>
             <div class="route-jobs">
                 ${route.steps
-                  .map(
-                    (job) => `
-                    <div class="job-item">
-                        <span>${job.jobDescription}</span>
+                  .map((job) => {
+                    if (job.type === 'start') {
+                      return `<div class="job-item"><span>start</span></div>`
+                    } else if (job.type === 'end') {
+                      return `<div class="job-item"><span>end</span></div>`
+                    } else {
+                      return `<div class="job-item">
+                        <span>${job.description}</span>
                         <span class="job-location">${job.duration.toFixed(
                           1
                         )} min</span>
                     </div>
-                `
-                  )
+                    `
+                    }
+                  })
+
                   .join('')}
             </div>
         `
