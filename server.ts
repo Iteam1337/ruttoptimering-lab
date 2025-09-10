@@ -20,6 +20,30 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', uptime: process.uptime() })
 })
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server körs på http://localhost:${port}`)
+})
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server')
+  server.close(() => {
+    console.log('HTTP server closed')
+  })
+})
+
+process.on('SIGINT', () => {
+  console.log('SIGINT signal received: closing HTTP server')
+  server.close(() => {
+    console.log('HTTP server closed')
+  })
+})
+
+// Keep the process alive
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error)
+})
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason)
 })
