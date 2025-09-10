@@ -1,14 +1,15 @@
 {
   "name": "ruttoptimering-lab",
   "version": "1.0.0",
-  "description": "",
+  "description": "A modern web application for route optimization with interactive map visualization",
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "ts-node server.ts",
     "clean": "rm -rf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "npm run build && npm start"
   },
   "repository": {
     "type": "git",
