@@ -393,6 +393,7 @@ function updateMapWithRoutes() {
   ]
 
   optimizationResults.routes.forEach((route, index) => {
+    const geometry = route.geometry
     const color = colors[index % colors.length]
     const coordinates = []
 
@@ -411,18 +412,8 @@ function updateMapWithRoutes() {
     if (vehicle) {
       coordinates.push([vehicle.end[1], vehicle.end[0]])
     }
-
     // Create polyline
-    const polyline = L.polyline(coordinates, {
-      color: color,
-      weight: 4,
-      opacity: 0.8,
-    }).bindPopup(`
-            <strong>${route.vehicleDescription}</strong><br>
-            Jobb: ${route.steps.length}<br>
-            Distans: ${route.duration.toFixed(2)} km<br>
-            Tid: ${route.duration.toFixed(1)} min
-        `)
+    var polyline = L.polyline(L.PolylineUtil.decode(route.geometry, 5))
 
     routePolylines.push(polyline)
     polyline.addTo(map)

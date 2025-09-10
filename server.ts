@@ -99,6 +99,9 @@ app.post('/api/data', (req, res) => {
 async function sendToVroom(vehicles: Vehicle[], jobs: Job[]) {
   const vroomUrl = 'https://vroom.telge.iteam.pub/'
   const requestBody = {
+    options: {
+      g: true,
+    },
     vehicles,
     jobs,
   }
