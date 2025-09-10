@@ -6,7 +6,7 @@ metadata:
 
 spec:
   ports:
-    - port: 80
+    - port: 3000
   type: ClusterIP
   selector:
     app: ruttoptimering
@@ -30,16 +30,16 @@ spec:
         - name: ruttoptimering
           image: ghcr.io/iteam1337/ruttoptimering:0.67.11 # {"$imagepolicy": "flux-system:ruttoptimering"}
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           readinessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 3000
             initialDelaySeconds: 5
             periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 3000
             initialDelaySeconds: 5
             periodSeconds: 5
