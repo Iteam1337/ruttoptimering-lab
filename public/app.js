@@ -32,111 +32,9 @@ function setupEventListeners() {
   document
     .getElementById('optimizeBtn')
     .addEventListener('click', optimizeRoutes)
-  document.getElementById('loadDataBtn').addEventListener('click', loadData)
-  document.getElementById('saveDataBtn').addEventListener('click', saveData)
-
-  // Add buttons
-  document
-    .getElementById('addVehicleBtn')
-    .addEventListener('click', () => openModal('vehicleModal'))
-  document
-    .getElementById('addJobBtn')
-    .addEventListener('click', () => openModal('jobModal'))
 
   // Map controls
   document.getElementById('centerMapBtn').addEventListener('click', centerMap)
-
-  // Modal events
-  setupModalEvents()
-
-  // Form submissions
-  document
-    .getElementById('vehicleForm')
-    .addEventListener('submit', handleVehicleSubmit)
-  document.getElementById('jobForm').addEventListener('submit', handleJobSubmit)
-}
-
-// Setup modal events
-function setupModalEvents() {
-  const modals = document.querySelectorAll('.modal')
-  const closeButtons = document.querySelectorAll('.modal-close')
-
-  closeButtons.forEach((button) => {
-    button.addEventListener('click', closeAllModals)
-  })
-
-  modals.forEach((modal) => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeAllModals()
-      }
-    })
-  })
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeAllModals()
-    }
-  })
-}
-
-// Modal functions
-function openModal(modalId) {
-  document.getElementById(modalId).classList.remove('hidden')
-}
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach((modal) => {
-    modal.classList.add('hidden')
-  })
-  clearForms()
-}
-
-function clearForms() {
-  document.getElementById('vehicleForm').reset()
-  document.getElementById('jobForm').reset()
-}
-
-// Form handlers
-function handleVehicleSubmit(e) {
-  e.preventDefault()
-
-  const vehicle = {
-    id: Date.now(),
-    description: document.getElementById('vehicleDescription').value,
-    start: [
-      parseFloat(document.getElementById('vehicleStartLng').value),
-      parseFloat(document.getElementById('vehicleStartLat').value),
-    ],
-    end: [
-      parseFloat(document.getElementById('vehicleEndLng').value),
-      parseFloat(document.getElementById('vehicleEndLat').value),
-    ],
-  }
-
-  vehicles.push(vehicle)
-  updateVehiclesList()
-  updateMap()
-  closeAllModals()
-}
-
-function handleJobSubmit(e) {
-  e.preventDefault()
-
-  const job = {
-    id: Date.now(),
-    description: document.getElementById('jobDescription').value,
-    location: [
-      parseFloat(document.getElementById('jobLng').value),
-      parseFloat(document.getElementById('jobLat').value),
-    ],
-  }
-
-  jobs.push(job)
-  updateJobsList()
-  updateMap()
-  closeAllModals()
 }
 
 // Load initial data
@@ -175,32 +73,6 @@ async function loadData() {
   } catch (error) {
     console.error('Error loading data:', error)
     showNotification('Fel vid laddning av data', 'error')
-  } finally {
-    showLoading(false)
-  }
-}
-
-// Save data to server
-async function saveData() {
-  try {
-    showLoading(true)
-    const data = { vehicles, jobs }
-    const response = await fetch('/api/data', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-
-    if (response.ok) {
-      showNotification('Data sparad framgångsrikt!', 'success')
-    } else {
-      throw new Error('Failed to save data')
-    }
-  } catch (error) {
-    console.error('Error saving data:', error)
-    showNotification('Fel vid sparande av data', 'error')
   } finally {
     showLoading(false)
   }
