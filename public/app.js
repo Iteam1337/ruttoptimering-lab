@@ -292,19 +292,16 @@ function displayResults() {
             <div class="route-jobs">
                 ${route.steps
                   .map((job) => {
-                    if (job.type === 'start') {
-                      return `<div class="job-item"><span>start</span></div>`
-                    } else if (job.type === 'end') {
-                      return `<div class="job-item"><span>end</span></div>`
-                    } else {
-                      return `<div class="job-item">
-                        <span>${job.description}</span>
+                    return `<div class="job-item">
+                        <span>${
+                          job.description ??
+                          (job.type === 'start' ? 'Start' : 'Slut')
+                        }</span>
                         <span class="job-location">${job.duration.toFixed(
                           1
                         )} min</span>
                     </div>
                     `
-                    }
                   })
 
                   .join('')}
