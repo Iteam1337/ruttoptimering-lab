@@ -58,6 +58,46 @@
         "id": 11,
         "description": "Christian",
         "location": [17.8908687,59.3392627]
+    },
+    {
+        "id": 12,
+        "description": "Andreas E L",
+        "location": [17.8701083,59.3280631]
+    },
+    {
+        "id": 13,
+        "description": "Erik",
+        "location": [15.3945086,58.5429128]
+    },
+    {
+        "id": 14,
+        "description": "Nora",
+        "location": [18.0034085,59.3071821]
+    },
+    {
+        "id": 15,
+        "description": "Anna",
+        "location": [12.0168325,57.4111371]
+    },
+    {
+        "id": 16,
+        "description": "Andreas L",
+        "location": [18.0037564,59.3038451]
+    },
+    {
+        "id": 17,
+        "description": "Emil",
+        "location": [18.0037564,59.3038451]
+    },
+    {
+        "id": 18,
+        "description": "Sven",
+        "location": [18.0037564,59.3038451]
+    },
+    {
+        "id": 19,
+        "description": "Petronella",
+        "location": [11.9847102,57.3130584]
     }
     ]
 }
