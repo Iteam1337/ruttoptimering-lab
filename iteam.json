@@ -2,7 +2,7 @@
     "vehicles": [
         {
             "id": 1,
-            "description": "Car",
+            "description": "T som i Tesla",
             "start": [18.070889259948316,59.31896552469873],
             "end": [18.070889259948316,59.31896552469873]
         }
