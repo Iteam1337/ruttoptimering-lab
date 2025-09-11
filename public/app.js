@@ -256,13 +256,6 @@ function updateVehiclesList() {
                     )}, ${vehicle.start[0].toFixed(4)}
                 </div>
             </div>
-            <div class="list-item-actions">
-                <button class="btn-icon" onclick="removeVehicle(${
-                  vehicle.id
-                })" title="Ta bort">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
         `
     container.appendChild(item)
   })
@@ -283,30 +276,9 @@ function updateJobsList() {
                     ${job.location[1].toFixed(4)}, ${job.location[0].toFixed(4)}
                 </div>
             </div>
-            <div class="list-item-actions">
-                <button class="btn-icon" onclick="removeJob(${
-                  job.id
-                })" title="Ta bort">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
         `
     container.appendChild(item)
   })
-}
-
-// Remove vehicle
-function removeVehicle(id) {
-  vehicles = vehicles.filter((v) => v.id !== id)
-  updateVehiclesList()
-  updateMap()
-}
-
-// Remove job
-function removeJob(id) {
-  jobs = jobs.filter((j) => j.id !== id)
-  updateJobsList()
-  updateMap()
 }
 
 // Update map with current data
