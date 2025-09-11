@@ -9,6 +9,10 @@ let vehicleMarkers = []
 let jobMarkers = []
 let routePolylines = []
 
+function formatDuration(duration) {
+  return (duration / 60).toFixed() + '  min'
+}
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function () {
   initializeMap()
@@ -286,7 +290,7 @@ function displayResults() {
                 <div class="route-stats">
                     ${route.steps.length} jobb • ${route.duration.toFixed(
       2
-    )} km • ${route.duration.toFixed(1)} min
+    )} km • ${formatDuration(route.duration)}
                 </div>
             </div>
             <div class="route-jobs">
@@ -297,9 +301,9 @@ function displayResults() {
                           job.description ??
                           (job.type === 'start' ? 'Start' : 'Slut')
                         }</span>
-                        <span class="job-location">${job.duration.toFixed(
-                          1
-                        )} min</span>
+                        <span class="job-location">${formatDuration(
+                          job.duration
+                        )}</span>
                     </div>
                     `
                   })
