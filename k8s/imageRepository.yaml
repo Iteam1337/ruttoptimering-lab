@@ -8,5 +8,3 @@ spec:
   image: ghcr.io/iteam1337/ruttoptimering-lab
   interval: 30s
   provider: generic
-  secretRef:
-    name: regcred
