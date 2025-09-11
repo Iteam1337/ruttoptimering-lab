@@ -8,5 +8,5 @@ spec:
   imageRepositoryRef:
     name: ruttoptimering
   policy:
-    numerical:
+    alphabetical:
       order: asc
