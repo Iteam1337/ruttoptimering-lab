@@ -10,3 +10,5 @@ spec:
   policy:
     alphabetical:
       order: asc
+  filterTags:
+    pattern: "^main$"
