@@ -5,6 +5,5 @@ metadata:
   name: ruttoptimering
   namespace: flux-system
 spec:
-  image: ghcr.io/iteam1337/ruttoptimering-lab:sha-5e9cf48
+  image: ghcr.io/iteam1337/ruttoptimering-lab
   interval: 30s
-  provider: generic
