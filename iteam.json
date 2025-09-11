@@ -38,6 +38,26 @@
         "id": 7,
         "description": "Simon",
         "location": [15.388949453864049,60.494842455072245]
+    },
+    {
+        "id": 8,
+        "description": "Johanna",
+        "location": [11.9372966,57.6970457]
+    },
+    {
+        "id": 9,
+        "description": "Anders",
+        "location": [17.97392,59.24030]
+    },
+    {
+        "id": 10,
+        "description": "Hans",
+        "location": [17.4276354,59.184244]
+    },
+    {
+        "id": 11,
+        "description": "Christian",
+        "location": [17.8908687,59.3392627]
     }
     ]
 }
